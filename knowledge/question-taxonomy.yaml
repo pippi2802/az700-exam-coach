@@ -1,0 +1,71 @@
+# Question taxonomy: shared definitions for question types, difficulty, and required fields.
+# The question-writer and exam-simulator agents conform to this taxonomy.
+question_taxonomy:
+  question_types:
+    - id: theory_recall
+      label: "Theory / recall"
+      description: "Tests definitions, capabilities, and factual feature knowledge."
+      target_share: "10%"
+    - id: scenario_design
+      label: "Scenario-based design"
+      description: "Presents requirements and asks for the best Azure design choice."
+      target_share: "70%"
+    - id: troubleshooting
+      label: "Troubleshooting"
+      description: "Presents a broken or misbehaving network and asks for the cause or fix."
+      target_share: "10%"
+    - id: lab_design
+      label: "Lab / hands-on design"
+      description: "Asks the candidate to plan or sequence an implementation."
+      target_share: "10%"
+
+  difficulty_levels:
+    - id: easy
+      label: "Easy"
+      description: "Single concept, direct recall or one-step reasoning."
+    - id: medium
+      label: "Medium"
+      description: "Combines two concepts or requires a trade-off decision."
+    - id: hard
+      label: "Hard"
+      description: "Multi-service scenario with subtle distractors and constraints."
+    - id: exam_like
+      label: "Exam-like"
+      description: "Mirrors real exam phrasing, requirement density, and distractor quality."
+
+  answer_formats:
+    - id: single_best
+      label: "Single best answer (A-D)"
+    - id: multi_select
+      label: "Multiple correct (select N)"
+    - id: ordering
+      label: "Order the steps"
+    - id: hotspot
+      label: "Match / hotspot style described in text"
+
+  required_fields:
+    - "id"
+    - "domain"
+    - "subtopic"
+    - "type"
+    - "difficulty"
+    - "scenario"
+    - "question"
+    - "options"
+    - "correct_answer"
+    - "explanation"
+    - "wrong_option_explanations"
+    - "sources"
+    - "skill_tested"
+
+  distractor_principles:
+    - "Every distractor must be a real Azure service or feature."
+    - "Distractors should be plausible for the scenario, not obviously wrong."
+    - "Test trade-offs: cost, availability, security, management overhead, performance."
+    - "Avoid grammatical or length cues that reveal the answer."
+
+  authoring_rules:
+    - "Generate original questions only."
+    - "Never reproduce real exam dumps or copied proprietary questions."
+    - "Ground factual claims in approved sources."
+    - "Prefer scenario-based questions over trivia."

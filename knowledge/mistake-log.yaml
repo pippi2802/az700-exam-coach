@@ -1,0 +1,64 @@
+# Mistake log: persistent record of learner errors used to drive recommendations.
+# The evaluator agent appends entries; the study-coach agent reads them.
+# Schema for each entry under "mistakes":
+#   id: stable unique id (e.g. M-0001)
+#   date: ISO date the mistake was recorded
+#   domain: blueprint domain id (D1-D5)
+#   subtopic: specific subtopic string
+#   topic_id: topic-map id (optional)
+#   question_ref: source quiz/mock file or question id
+#   question_summary: short description of what was asked
+#   chosen_answer: what the learner answered
+#   correct_answer: the correct option
+#   misconception: the concept the learner misunderstood
+#   severity: low | medium | high
+#   resolved: true | false (set true after successful re-test)
+mistakes:
+  - id: M-0001
+    date: "2026-06-30"
+    domain: D2
+    subtopic: "ExpressRoute Global Reach"
+    topic_id: T-expressroute
+    question_ref: "quiz-expressroute Q2"
+    question_summary: "Connect two on-premises datacentres (London/Singapore) to each other over the Microsoft backbone."
+    chosen_answer: "C (ExpressRoute Direct)"
+    correct_answer: "B (ExpressRoute Global Reach)"
+    misconception: "Confused ExpressRoute Direct (dedicated high-bandwidth ports) with Global Reach (interconnecting on-premises sites)."
+    severity: medium
+    resolved: false
+  - id: M-0002
+    date: "2026-06-30"
+    domain: D2
+    subtopic: "ExpressRoute FastPath"
+    topic_id: T-expressroute
+    question_ref: "quiz-expressroute Q3"
+    question_summary: "Bypass the ExpressRoute VNet gateway on the data path; identify feature and prerequisite."
+    chosen_answer: "D (FastPath; circuit must use Local SKU)"
+    correct_answer: "A (FastPath; gateway must be Ultra Performance or ErGw3AZ)"
+    misconception: "Picked the right feature (FastPath) but confused the gateway SKU prerequisite with the circuit SKU."
+    severity: medium
+    resolved: false
+  - id: M-0003
+    date: "2026-06-30"
+    domain: D2
+    subtopic: "Encryption over ExpressRoute / ExpressRoute Direct"
+    topic_id: T-expressroute
+    question_ref: "quiz-expressroute Q5"
+    question_summary: "Require native Layer 2 encryption on ExpressRoute Direct ports (not an IPsec tunnel)."
+    chosen_answer: "B (IPsec site-to-site VPN over Microsoft peering)"
+    correct_answer: "A (MACsec on the ExpressRoute Direct ports)"
+    misconception: "Confused Layer 3 IPsec-over-circuit encryption with Layer 2 MACsec port encryption on ExpressRoute Direct."
+    severity: medium
+    resolved: false
+
+summary:
+  total_mistakes: 3
+  by_domain:
+    D1: 0
+    D2: 3
+    D3: 0
+    D4: 0
+    D5: 0
+  weakest_domains:
+    - D2
+  last_updated: "2026-06-30"

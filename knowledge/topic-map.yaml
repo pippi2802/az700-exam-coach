@@ -1,0 +1,168 @@
+# Topic map: relationships, dependencies, and study ordering between AZ-700 topics.
+# The study-coach agent uses prerequisites to order recommendations.
+topic_map:
+  meta:
+    description: "Dependency graph and learning order for AZ-700 topics."
+    blueprint_ref: "exam-blueprint.yaml"
+
+  topics:
+    - id: T-vnet
+      label: "Virtual Networks and subnetting"
+      domain: D1
+      prerequisites: []
+      unlocks: ["T-peering", "T-udr", "T-nsg", "T-privateendpoint", "T-natgw"]
+      practical_relevance: "very_high"
+
+    - id: T-ipaddr
+      label: "IP addressing, Public IP, Custom IP Prefix"
+      domain: D1
+      prerequisites: ["T-vnet"]
+      unlocks: ["T-natgw", "T-lb"]
+      practical_relevance: "high"
+
+    - id: T-dns
+      label: "Azure DNS zones and Private Resolver"
+      domain: D1
+      prerequisites: ["T-vnet"]
+      unlocks: ["T-privateendpoint"]
+      practical_relevance: "high"
+
+    - id: T-peering
+      label: "VNet peering and Virtual Network Manager"
+      domain: D1
+      prerequisites: ["T-vnet"]
+      unlocks: ["T-hubspoke", "T-vwan"]
+      practical_relevance: "very_high"
+
+    - id: T-udr
+      label: "User-defined routes, forced tunnelling, Route Server"
+      domain: D1
+      prerequisites: ["T-vnet", "T-peering"]
+      unlocks: ["T-hubspoke", "T-firewall"]
+      practical_relevance: "very_high"
+
+    - id: T-natgw
+      label: "Azure NAT Gateway"
+      domain: D1
+      prerequisites: ["T-ipaddr"]
+      unlocks: []
+      practical_relevance: "medium"
+
+    - id: T-netwatcher
+      label: "Network Watcher, flow logs, diagnostics, DDoS"
+      domain: D1
+      prerequisites: ["T-vnet", "T-nsg"]
+      unlocks: ["T-troubleshooting"]
+      practical_relevance: "high"
+
+    - id: T-s2svpn
+      label: "Site-to-site and point-to-site VPN"
+      domain: D2
+      prerequisites: ["T-vnet", "T-udr"]
+      unlocks: ["T-vwan"]
+      practical_relevance: "high"
+
+    - id: T-expressroute
+      label: "ExpressRoute connectivity, peering, FastPath, Direct"
+      domain: D2
+      prerequisites: ["T-vnet"]
+      unlocks: ["T-vwan"]
+      practical_relevance: "high"
+
+    - id: T-vwan
+      label: "Azure Virtual WAN and hub routing"
+      domain: D2
+      prerequisites: ["T-peering", "T-s2svpn", "T-expressroute"]
+      unlocks: ["T-securehub"]
+      practical_relevance: "high"
+
+    - id: T-lb
+      label: "Azure Load Balancer (regional and cross-region)"
+      domain: D3
+      prerequisites: ["T-vnet", "T-ipaddr"]
+      unlocks: []
+      practical_relevance: "high"
+
+    - id: T-trafficmanager
+      label: "Azure Traffic Manager"
+      domain: D3
+      prerequisites: ["T-dns"]
+      unlocks: []
+      practical_relevance: "medium"
+
+    - id: T-appgw
+      label: "Application Gateway and TLS/rewrite"
+      domain: D3
+      prerequisites: ["T-vnet", "T-lb"]
+      unlocks: ["T-waf"]
+      practical_relevance: "high"
+
+    - id: T-frontdoor
+      label: "Azure Front Door and global delivery"
+      domain: D3
+      prerequisites: ["T-dns"]
+      unlocks: ["T-waf"]
+      practical_relevance: "high"
+
+    - id: T-privateendpoint
+      label: "Private Link, Private Endpoints, DNS integration"
+      domain: D4
+      prerequisites: ["T-vnet", "T-dns"]
+      unlocks: []
+      practical_relevance: "very_high"
+
+    - id: T-serviceendpoint
+      label: "Service Endpoints and policies"
+      domain: D4
+      prerequisites: ["T-vnet"]
+      unlocks: []
+      practical_relevance: "medium"
+
+    - id: T-nsg
+      label: "NSG, ASG, security rules"
+      domain: D5
+      prerequisites: ["T-vnet"]
+      unlocks: ["T-netwatcher", "T-firewall"]
+      practical_relevance: "very_high"
+
+    - id: T-bastion
+      label: "Azure Bastion"
+      domain: D5
+      prerequisites: ["T-vnet"]
+      unlocks: []
+      practical_relevance: "medium"
+
+    - id: T-firewall
+      label: "Azure Firewall, Firewall Manager, policies"
+      domain: D5
+      prerequisites: ["T-vnet", "T-udr", "T-nsg"]
+      unlocks: ["T-securehub"]
+      practical_relevance: "very_high"
+
+    - id: T-waf
+      label: "Web Application Firewall (Front Door and App Gateway)"
+      domain: D5
+      prerequisites: ["T-appgw", "T-frontdoor"]
+      unlocks: []
+      practical_relevance: "high"
+
+    - id: T-hubspoke
+      label: "Hub-and-spoke reference architecture"
+      domain: D1
+      prerequisites: ["T-peering", "T-udr"]
+      unlocks: ["T-securehub"]
+      practical_relevance: "very_high"
+
+    - id: T-securehub
+      label: "Secured virtual hub with Azure Firewall"
+      domain: D5
+      prerequisites: ["T-vwan", "T-firewall", "T-hubspoke"]
+      unlocks: []
+      practical_relevance: "high"
+
+    - id: T-troubleshooting
+      label: "Connectivity troubleshooting workflows"
+      domain: D1
+      prerequisites: ["T-netwatcher"]
+      unlocks: []
+      practical_relevance: "high"

@@ -1,0 +1,2 @@
+[console_scripts]
+az700 = cli:main

@@ -1,0 +1,42 @@
+# Learner profile: persistent state about the studying user.
+# Agents read this to personalise difficulty, pacing, and recommendations.
+learner_profile:
+  name: "Learner"
+  target_exam_date: null          # ISO date, e.g. "2026-09-01"
+  weekly_study_hours: 6
+  experience_level: "intermediate" # beginner | intermediate | advanced
+  preferred_learning_style:
+    - "scenario-based"
+    - "hands-on labs"
+
+  goals:
+    - "Pass AZ-700 on first attempt"
+    - "Build practical hub-spoke and Virtual WAN skills"
+
+  self_rated_confidence:   # 1 (low) to 5 (high) per domain
+    D1: 3
+    D2: 2
+    D3: 3
+    D4: 2
+    D5: 3
+
+  measured_performance:    # populated by graded quizzes/mock exams
+    D1: null
+    D2: 40            # ExpressRoute quiz 2026-06-30: 2/5
+    D3: null
+    D4: null
+    D5: null
+
+  weak_areas:              # subtopic strings, auto-derived from mistake-log + measured_performance
+    - "ExpressRoute Global Reach"
+    - "ExpressRoute FastPath"
+    - "Encryption over ExpressRoute / ExpressRoute Direct"
+  strong_areas:
+    - "ExpressRoute SKU and tier"
+    - "Private peering vs Microsoft peering"
+
+  history:
+    quizzes_taken: 1
+    mock_exams_taken: 0
+    labs_completed: 0
+    last_session: "2026-06-30"

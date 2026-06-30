@@ -1,0 +1,197 @@
+# AZ-700 Exam Blueprint (cached memory)
+# This file is the persistent, cached representation of the AZ-700 exam structure.
+# Agents MUST read this file instead of rebuilding exam structure from scratch.
+# Refresh ONLY when the user explicitly runs /refresh-blueprint (see refresh_policy).
+exam:
+  code: "AZ-700"
+  name: "Designing and Implementing Microsoft Azure Networking Solutions"
+  certification: "Microsoft Certified: Azure Network Engineer Associate"
+  cache_version: "2026-06-30"
+  last_verified_against_source: "2026-06-30"
+
+  refresh_policy:
+    mode: "manual"
+    refresh_commands:
+      - "/refresh-blueprint"
+      - "refresh blueprint"
+      - "update exam structure"
+      - "sync with latest AZ-700 guide"
+      - "check if AZ-700 changed"
+    offline_behaviour: >
+      If source access is unavailable during a refresh, clearly tell the user:
+      "I am using the cached blueprint only and cannot verify whether it is still current."
+    note: >
+      GitHub Copilot cannot automatically refresh this file unless connected to a workflow
+      or external automation. When refreshed, compare against the latest official
+      Microsoft Learn AZ-700 study guide and preserve change history.
+
+  source_of_truth:
+    primary: "Official Microsoft Learn AZ-700 study guide"
+    secondary:
+      - "Official Microsoft Learn Azure documentation"
+      - "Official Microsoft certification page"
+      - "Microsoft Learn AZ-700 training path"
+      - "Azure Architecture Center"
+
+  audience_profile:
+    summary: "Candidate plans, implements, manages, monitors, and troubleshoots Azure networking solutions."
+    expected_knowledge:
+      - "Azure networking fundamentals"
+      - "Name resolution"
+      - "Network protocols"
+      - "Network address management"
+      - "Azure compute, storage, and networking resources"
+
+  domains:
+    - id: D1
+      name: "Design and implement core networking infrastructure"
+      weight: "25-30%"
+      weight_midpoint: 27
+      priority: "very_high"
+      subtopics:
+        - "IP addressing for Azure resources"
+        - "VNet creation and subnetting"
+        - "Public IP and Public IP Prefix"
+        - "Custom IP Prefix"
+        - "Azure DNS public and private zones"
+        - "Azure DNS Private Resolver"
+        - "VNet peering"
+        - "Azure Virtual Network Manager"
+        - "User-defined routes"
+        - "Forced tunnelling"
+        - "Azure Route Server"
+        - "Azure NAT Gateway"
+        - "Network monitoring and diagnostics"
+        - "Azure Network Watcher"
+        - "DDoS protection"
+        - "Microsoft Defender for Cloud network recommendations"
+
+    - id: D2
+      name: "Design, implement, and manage connectivity services"
+      weight: "20-25%"
+      weight_midpoint: 22
+      priority: "very_high"
+      subtopics:
+        - "Site-to-site VPN"
+        - "Point-to-site VPN"
+        - "VPN Gateway SKUs"
+        - "Policy-based vs route-based VPN"
+        - "IPsec/IKE policies"
+        - "RADIUS authentication"
+        - "Microsoft Entra ID authentication for VPN"
+        - "Always On VPN"
+        - "Azure Network Adapter"
+        - "ExpressRoute connectivity models"
+        - "ExpressRoute SKU and tier"
+        - "ExpressRoute redundancy and disaster recovery"
+        - "ExpressRoute Global Reach"
+        - "ExpressRoute FastPath"
+        - "ExpressRoute Direct"
+        - "Private peering"
+        - "Microsoft peering"
+        - "Encryption over ExpressRoute"
+        - "Bidirectional Forwarding Detection"
+        - "Azure Virtual WAN"
+        - "Virtual WAN hub routing"
+        - "Virtual WAN gateway scale units"
+        - "Third-party NVA integration"
+
+    - id: D3
+      name: "Design and implement application delivery services"
+      weight: "15-20%"
+      weight_midpoint: 17
+      priority: "high"
+      subtopics:
+        - "Azure Load Balancer"
+        - "Internal vs public Load Balancer"
+        - "Regional vs cross-region Load Balancer"
+        - "Gateway Load Balancer"
+        - "Inbound NAT rules"
+        - "Outbound rules and SNAT"
+        - "Azure Traffic Manager"
+        - "Azure Application Gateway"
+        - "Backend pools"
+        - "Health probes"
+        - "Listeners"
+        - "Routing rules"
+        - "HTTP settings"
+        - "TLS configuration"
+        - "Rewrite rule sets"
+        - "Azure Front Door"
+        - "Front Door routing"
+        - "Origins and endpoints"
+        - "TLS termination"
+        - "End-to-end TLS"
+        - "Caching"
+        - "Traffic acceleration"
+        - "URL rewrite and redirect"
+        - "Private Link origin security"
+
+    - id: D4
+      name: "Design and implement private access to Azure services"
+      weight: "10-15%"
+      weight_midpoint: 12
+      priority: "medium_high"
+      subtopics:
+        - "Azure Private Link"
+        - "Private Endpoints"
+        - "Private Endpoint DNS integration"
+        - "Private Link service"
+        - "On-premises access to Private Link"
+        - "Service Endpoints"
+        - "Service Endpoint policies"
+        - "Choosing Private Endpoint vs Service Endpoint"
+
+    - id: D5
+      name: "Design and implement Azure network security services"
+      weight: "15-20%"
+      weight_midpoint: 17
+      priority: "high"
+      subtopics:
+        - "Network Security Groups"
+        - "Application Security Groups"
+        - "NSG inbound and outbound rules"
+        - "Virtual network flow logs"
+        - "IP flow verify"
+        - "Azure Bastion"
+        - "Azure Virtual Network Manager security admin rules"
+        - "Azure Firewall"
+        - "Azure Firewall SKUs"
+        - "Azure Firewall rules"
+        - "Azure Firewall Manager"
+        - "Firewall policies"
+        - "Secure hub with Azure Firewall in Virtual WAN"
+        - "Web Application Firewall"
+        - "WAF detection and prevention mode"
+        - "WAF rule sets"
+        - "WAF on Azure Front Door"
+        - "WAF on Application Gateway"
+
+  question_distribution_guidance:
+    scenario_based: "70%"
+    theory_recall: "10%"
+    troubleshooting: "10%"
+    lab_design: "10%"
+
+  difficulty_distribution:
+    easy: "20%"
+    medium: "45%"
+    hard: "25%"
+    exam_like: "10%"
+
+  mock_exam_defaults:
+    question_count: 50
+    pass_threshold_percent: 70
+    time_limit_minutes: 100
+
+  forbidden_content:
+    - "Real exam dumps"
+    - "Copied proprietary exam questions"
+    - "Unsupported claims"
+    - "Unverified Azure limits"
+
+  change_history:
+    - version: "2026-06-30"
+      source: "Existing cached repository knowledge"
+      date_checked: "2026-06-30"
+      summary: "Initial cached blueprint established from repository knowledge files."
