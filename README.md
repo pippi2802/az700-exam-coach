@@ -13,7 +13,7 @@ grounded in trusted Microsoft sources and a **cached exam blueprint**.
 
 ```bash
 # 1. Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/pippi2802/az700-exam-coach.git
 cd AZ-700-exam-coach
 
 # 2. (Optional) install the Python tooling + dev dependencies
