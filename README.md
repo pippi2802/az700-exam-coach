@@ -9,6 +9,39 @@ generates original scenario questions, designs hands-on labs, runs weighted mock
 exams, grades answers, tracks mistakes, and recommends what to study next — all
 grounded in trusted Microsoft sources and a **cached exam blueprint**.
 
+## Quick start
+
+```bash
+# 1. Clone the repository
+git clone <your-repo-url>
+cd AZ-700-exam-coach
+
+# 2. (Optional) install the Python tooling + dev dependencies
+python -m pip install -e ".[dev]"
+
+# 3. Verify everything works
+python -m pytest -q
+python -m src.cli blueprint
+```
+
+Then study with the agents:
+
+1. Open the folder in **VS Code** with **GitHub Copilot Chat** enabled.
+2. In Copilot Chat, open the prompt picker (type `/`) and run a command such as
+   `initialise-agent`, `generate-quiz`, `generate-mock-exam`, or `build-study-plan`.
+3. Or just ask the coach directly — e.g. *"explain VNet peering"* or
+   *"what should I study next?"* — and the
+   [orchestrator](agents/orchestrator.agent.md) routes to the right specialist.
+
+Generated artefacts (quizzes, labs, mock exams, study plans, topic reviews) are
+saved under [`outputs/`](outputs/). Your progress is tracked in
+[`knowledge/mistake-log.yaml`](knowledge/mistake-log.yaml) and
+[`knowledge/learner-profile.yaml`](knowledge/learner-profile.yaml).
+
+> **Requirements:** Python 3.10+ and VS Code with GitHub Copilot. The Python
+> tooling is optional — the agents work from the prompts alone — but it powers
+> the CLI and the test suite.
+
 ## Key ideas
 
 - **Layered multi-agent architecture.** A central orchestrator routes work to
